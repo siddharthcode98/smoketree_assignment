@@ -36,7 +36,7 @@ app.post("/register", async (req, res) => {
     if (user !== undefined) {
       const updateAddress = `INSERT INTO Address(address,user_id) VALUES(?,?);`;
       const data = await db.run(updateAddress, [address, user.id]);
-      res.send(data);
+      res.send("User Address created Successfully");
       res.status(200);
     } else {
       const insertNameIntoNameTable = `INSERT INTO User(name) VALUES(?);`;
@@ -45,13 +45,10 @@ app.post("/register", async (req, res) => {
       const user = await db.get(getUser, [name]);
       const createNewAddress = `INSERT INTO Address(user_id,address) VALUES(?,?);`;
       const data = await db.run(createNewAddress, [user.id, address]);
-      res.send(data);
+      res.send("New User with Address is created successfully");
       res.status(200);
     }
-
-    //console.log(userId);
   } catch (error) {
-    console.log(error.message);
     res.send("error occurred");
   }
 });
