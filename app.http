@@ -1,0 +1,7 @@
+POST http://localhost:3000/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"V.Siddharth",
+    "address":"Secunderabad,Telangana"
+}
